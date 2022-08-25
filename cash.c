@@ -43,11 +43,6 @@ int get_cents(void)
 {
 
     int cents_owed = get_int("How many cents owed? - ");
-    if (cents_owed < 0)
-    {
-        printf("Negative cents not allowed!\n");
-        return 1;
-    }
     return cents_owed;
 }
 
