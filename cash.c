@@ -36,14 +36,18 @@ int main(void)
     int coins = quarters + dimes + nickels + pennies;
 
     // Print total number of coins to give the customer
-    printf("%i coins\n", coins);
-    printf("%i quaretrs, %i dimes, %i nickels, %i pennies\n", quarters, dimes, nickels, pennies);
+    printf("%i\n", coins);
 }
 
 int get_cents(void)
 {
 
     int cents_owed = get_int("How many cents owed? - ");
+    if (cents_owed < 0)
+    {
+        printf("Negative cents not allowed!\n");
+        return 1;
+    }
     return cents_owed;
 }
 
