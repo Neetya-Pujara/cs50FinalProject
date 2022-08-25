@@ -41,7 +41,6 @@ int main(void)
 
 int get_cents(void)
 {
-
     int cents_owed = get_int("How many cents owed? - ");
     return cents_owed;
 }
