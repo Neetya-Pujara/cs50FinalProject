@@ -183,16 +183,14 @@ bool print_winner(void)
 int find_min(void)
 {
     int min_score = voter_count;
-    int min;
     for (int i = 0; i < candidate_count; i++)
     {
         if (min_score > candidates[i].votes)
         {
             min_score = candidates[i].votes;
-            min = i;
         }
     }
-    return min;
+    return min_score;
 }
 
 // Return true if the election is tied between all candidates, false otherwise
@@ -200,7 +198,7 @@ bool is_tie(int min)
 {
     for (int i = 0; i < candidate_count; i++)
     {
-        if (!(candidates[min].votes == candidates[i].votes))
+        if (!(min == candidates[i].votes))
             return false;
     }
     return true;
@@ -211,7 +209,7 @@ void eliminate(int min)
 {
     for (int i = 0; i < candidate_count; i++)
     {
-        if (candidates[min].votes == candidates[i].votes)
+        if (min == candidates[i].votes)
             candidates[i].eliminated = true;
     }
 }
