@@ -126,11 +126,14 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             {
                 for (int w = 0; w < 3; w++)
                 {
-                    red+=copy[hpattern[h]][wpattern[w]].rgbtRed;
-                    blue+=copy[hpattern[h]][wpattern[w]].rgbtBlue;
-                    green+=copy[hpattern[h]][wpattern[w]].rgbtGreen;
-
-                    counter++;
+                    if (!((hpattern[h] < 0) && (wpattern[w] < 0)))
+                    {
+                        red+=copy[hpattern[h]][wpattern[w]].rgbtRed;
+                        blue+=copy[hpattern[h]][wpattern[w]].rgbtBlue;
+                        green+=copy[hpattern[h]][wpattern[w]].rgbtGreen;
+                        
+                        counter++;
+                    }
                 }
             }
 
