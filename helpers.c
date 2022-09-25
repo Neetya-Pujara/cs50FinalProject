@@ -37,9 +37,9 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
         for (int j = 0; j < width; j++)
         {
             //Calculating
-            int sepiaRed = round((.393 * copy[i][j].rgbtRed + .769 * copy[i][j].rgbtGreen + .189 * copy[i][j].rgbtBlue) / 3);
-            int sepiaGreen = round((.349 * copy[i][j].rgbtRed + .686 * copy[i][j].rgbtGreen + .168 * copy[i][j].rgbtBlue) / 3);
-            int sepiaBlue = round((.272 * copy[i][j].rgbtRed + .534 * copy[i][j].rgbtGreen + .131 * copy[i][j].rgbtBlue) / 3);
+            int sepiaRed = round(.393 * copy[i][j].rgbtRed + .769 * copy[i][j].rgbtGreen + .189 * copy[i][j].rgbtBlue);
+            int sepiaGreen = round(.349 * copy[i][j].rgbtRed + .686 * copy[i][j].rgbtGreen + .168 * copy[i][j].rgbtBlue);
+            int sepiaBlue = round(.272 * copy[i][j].rgbtRed + .534 * copy[i][j].rgbtGreen + .131 * copy[i][j].rgbtBlue);
 
             //Setting
             image[i][j].rgbtRed = sepiaRed;
@@ -131,7 +131,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                         red+=copy[hpattern[h]][wpattern[w]].rgbtRed;
                         blue+=copy[hpattern[h]][wpattern[w]].rgbtBlue;
                         green+=copy[hpattern[h]][wpattern[w]].rgbtGreen;
-                        
+
                         counter++;
                     }
                 }
