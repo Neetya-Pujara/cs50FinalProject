@@ -16,14 +16,14 @@ int main(int argc, string argv[])
     {
         if (isdigit(argv[1][i]) == 0)
         {
-            return 3;
+            return 1;
         }
     }
     int k = atoi(argv[1]);
     if (k < 0)
     {
         printf("Usage: ./caesar [key]\n");
-        return 2;
+        return 1;
     }
 
     //Ask user for plaintext
@@ -31,31 +31,32 @@ int main(int argc, string argv[])
     printf("Ciphertext: ");
     for (int i = 0; i < strlen(p); i++)
     {
-        char c = p[i];
-        char h = c + k;
-        if (isupper(c))
+        char c;
+        if (isupper(p[i]))
         {
-            if (h > 90)
+            c = p[i] + k;
+            if (c > 90)
             {
-                h-=26;
+                c-=26;
             }
         }
 
-        else if (islower(c))
+        else if (islower(p[i]))
         {
-            if (h > 122)
+            c = p[i] + k;
+            if (c > 122)
             {
-                h-=26;
+                c-=26;
             }
         }
 
         else
         {
-            h = c;
+            c = p[i];
         }
 
         //Printing each coded character out
-        printf("%c", h);
+        printf("%c", c);
     }
     printf("\n");
 }
