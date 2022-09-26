@@ -44,19 +44,19 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
             //Capping for red
             if (sepiaRed > 255)
             {
-                sepiaRed-=256;
+                sepiaRed-=255;
             }
 
             //Capping for green
             if (sepiaGreen > 255)
             {
-                sepiaGreen-=256;
+                sepiaGreen-=255;
             }
 
             //Capping for blue
             if (sepiaBlue > 255)
             {
-                sepiaBlue-=256;
+                sepiaBlue-=255;
             }
 
             //Setting
