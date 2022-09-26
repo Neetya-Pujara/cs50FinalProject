@@ -126,6 +126,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             {
                 for (int w = 0; w < 3; w++)
                 {
+                    //if not on edge
                     if (!((hpattern[h] < 0) && (wpattern[w] < 0)))
                     {
                         red+=copy[hpattern[h]][wpattern[w]].rgbtRed;
