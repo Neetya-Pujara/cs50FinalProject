@@ -113,9 +113,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             int counter = 0;
 
             // Values of the current pixel going to be modified later
-            int red = 0;
-            int blue = 0;
-            int green = 0;
+            float red = 0.0;
+            float blue = 0.0;
+            float green = 0.0;
 
             // Automated Pattern
             int hpattern[] = {i - 1, i, i + 1};
