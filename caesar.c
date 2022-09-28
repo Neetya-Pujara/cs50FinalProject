@@ -33,27 +33,30 @@ int main(int argc, string argv[])
     for (int i = 0; i < strlen(p); i++)
     {
         char c = p[i];
-        if (isupper(c))
+        if (isalpha(c))
         {
-            c+=k;
-            if (c > 90)
+            if (isupper(c))
             {
-                c-=26;
+                c+=k;
+                if (c > 90)
+                {
+                    c-=26;
+                }
             }
-        }
 
-        else if (islower(p[i]))
-        {
-            c+=k;
-            if (c > 122)
+            if (islower(c))
             {
-                c-=26;
+                c+=k;
+                if (c > 122)
+                {
+                    c-=26;
+                }
             }
         }
 
         else
         {
-            c = p[i];
+            c+=0;
         }
 
         //Printing each coded character out
