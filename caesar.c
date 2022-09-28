@@ -8,7 +8,7 @@ int main(int argc, string argv[])
 {
     if (argc != 2)
     {
-        printf("Usage: ./caesar [key]\n");
+        printf("Usage: ./caesar key\n");
         return 1;
     }
 
@@ -16,13 +16,14 @@ int main(int argc, string argv[])
     {
         if (isdigit(argv[1][i]) == 0)
         {
+            printf("Usage: ./caesar key\n");
             return 1;
         }
     }
     int k = atoi(argv[1]);
     if (k < 0)
     {
-        printf("Usage: ./caesar [key]\n");
+        printf("Usage: ./caesar key\n");
         return 1;
     }
 
@@ -31,10 +32,10 @@ int main(int argc, string argv[])
     printf("Ciphertext: ");
     for (int i = 0; i < strlen(p); i++)
     {
-        char c;
-        if (isupper(p[i]))
+        char c = p[i];
+        if (isupper(c))
         {
-            c = p[i] + k;
+            c+=k;
             if (c > 90)
             {
                 c-=26;
@@ -43,7 +44,7 @@ int main(int argc, string argv[])
 
         else if (islower(p[i]))
         {
-            c = p[i] + k;
+            c+=k;
             if (c > 122)
             {
                 c-=26;
