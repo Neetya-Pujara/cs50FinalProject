@@ -17,7 +17,7 @@ int main(int argc, string argv[])
         if (isdigit(argv[1][i]) == 0)
         {
             printf("Enter a integer key!\n");
-            return 2;
+            return 1;
         }
     }
 
@@ -25,16 +25,12 @@ int main(int argc, string argv[])
 
     string plain = get_string("Plaintext: ");
 
-    printf("Ciphertext: ");
-
-    char cipher;
-
     for (int i = 0; i < strlen(plain); i++)
     {
         if (isupper(plain[i]) != 0)
         {
             plain[i] += key;
-            if (plain[i] > 90)
+            while (plain[i] > 90)
             {
                 plain[i] -= 26;
             }
@@ -43,13 +39,11 @@ int main(int argc, string argv[])
         if (islower(plain[i]) != 0)
         {
             plain[i] += key;
-            if (plain[i] > 122)
+            while (plain[i] > 122)
             {
                 plain[i] -= 26;
             }
         }
-
-        printf("%c", plain[i]);
     }
-    printf("\n");
+    printf("Ciphertext: %s\n", plain);
 }
