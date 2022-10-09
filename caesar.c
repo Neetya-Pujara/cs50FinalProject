@@ -1,14 +1,14 @@
 #include <cs50.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <ctype.h>
+#include <string.h>
+#include <stdlib.h>
 
 int main(int argc, string argv[])
 {
     if (argc != 2)
     {
-        printf("Usage: ./caesar key\n");
+        printf("Enter one command line argument (for the key)!\n");
         return 1;
     }
 
@@ -16,51 +16,40 @@ int main(int argc, string argv[])
     {
         if (isdigit(argv[1][i]) == 0)
         {
-            printf("Usage: ./caesar key\n");
-            return 1;
+            printf("Enter a integer key!\n");
+            return 2;
         }
     }
-    int k = atoi(argv[1]);
-    if (k < 0)
-    {
-        printf("Usage: ./caesar key\n");
-        return 1;
-    }
 
-    //Ask user for plaintext
-    string p = get_string("Plaintext : ");
+    int key = atoi(argv[1]);
+
+    string plain = get_string("Plaintext: ");
+
     printf("Ciphertext: ");
-    for (int i = 0; i < strlen(p); i++)
+
+    char cipher;
+
+    for (int i = 0; i < strlen(plain); i++)
     {
-        char c = p[i];
-        if (isalpha(c))
+        if (isupper(plain[i]) != 0)
         {
-            if (isupper(c))
+            plain[i] += key;
+            if (plain[i] > 90)
             {
-                c+=k;
-                if (c > 90)
-                {
-                    c-=26;
-                }
-            }
-
-            if (islower(c))
-            {
-                c+=k;
-                if (c > 122)
-                {
-                    c-=26;
-                }
+                plain[i] -= 26;
             }
         }
 
-        else
+        if (islower(plain[i]) != 0)
         {
-            c+=0;
+            plain[i] += key;
+            if (plain[i] > 122)
+            {
+                plain[i] -= 26;
+            }
         }
 
-        //Printing each coded character out
-        printf("%c", c);
+        printf("%c", plain[i]);
     }
     printf("\n");
 }
