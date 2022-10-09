@@ -27,21 +27,26 @@ int main(int argc, string argv[])
 
     for (int i = 0; i < strlen(plain); i++)
     {
-        if (isupper(plain[i]) != 0)
+        if (isalpha(plain[i]))
         {
-            plain[i] += key;
-            while (plain[i] > 90)
-            {
-                plain[i] -= 26;
-            }
-        }
+            int c = plain[i] + key;
 
-        if (islower(plain[i]) != 0)
-        {
-            plain[i] += key;
-            while (plain[i] > 122)
+            if (isupper(plain[i]))
             {
-                plain[i] -= 26;
+                while (c > 90)
+                {
+                    c-=26;
+                }
+                plain[i] = c;
+            }
+
+            if (islower(plain[i]))
+            {
+                while (c > 122)
+                {
+                    c-=26;
+                }
+                plain[i] = c;
             }
         }
     }
