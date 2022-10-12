@@ -1,0 +1,11 @@
+sort1 uses: Bubble Sort
+
+How do you know?: Sort1 ran the fastest on a sorted (omega) array.
+
+sort2 uses: Merge Sort
+
+How do you know?: Sort2 ran the fastest on a random (big o) list.
+
+sort3 uses: Selection Sort
+
+How do you know?: Sort3 ran the slowest on a sorted list.
