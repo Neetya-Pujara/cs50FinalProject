@@ -122,5 +122,5 @@ bool unload(void)
             freenode(table[i]->next);
         }
     }
-    return false;
+    return true;
 }
