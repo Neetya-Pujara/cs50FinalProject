@@ -103,11 +103,10 @@ unsigned int size(void)
 
 void freenode (node *n)
 {
-    if (n == NULL)
+    if (n->next != NULL)
     {
-        return;
+        freenode(n->next);
     }
-    freenode(n->next);
     free(n);
 }
 
@@ -119,7 +118,7 @@ bool unload(void)
     {
         if(table[i] != NULL)
         {
-            freenode(table[i]->next);
+            freenode(table[i]);
         }
     }
     return true;
