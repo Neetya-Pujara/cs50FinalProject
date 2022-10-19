@@ -24,12 +24,30 @@ int countword = 0;
 // Hash table
 node *table[N];
 
+bool ignorecase (string word1, string word2)
+{
+    if (strlen(word1) != strlen(word2))
+    {
+        return false;
+    }
+    for (int i = 0; i < strlen(word1); i++)
+    {
+        word1[i] = tolower(word1[i]);
+        word2[i] = tolower(word2[i]);
+    }
+    if (strcmp(word1, word2) == 0)
+    {
+        return true;
+    }
+    return false;
+}
+
 // Returns true if word is in dictionary, else false
-bool check(const char *word)
+bool check(string word)
 {
     for (node *temp = table[hash(word)]; temp != NULL; temp = temp->next)
     {
-        if (strcasecmp(temp->word, word) == 0)
+        if (ignorecase(temp->word, word))
         {
             return true;
         }
