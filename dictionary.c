@@ -29,7 +29,7 @@ bool check(const char *word)
 {
     for (node *temp = table[hash(word)]; temp != NULL; temp = temp->next)
     {
-        if(strcasecmp(temp->word, word) == 0)
+        if (strcasecmp(temp->word, word) == 0)
         {
             return true;
         }
@@ -45,7 +45,7 @@ unsigned int hash(const char *word)
     int total = 0;
     for (int i = 0; i < strlen(word); i++)
     {
-        total+=tolower(word[i]);
+        total += tolower(word[i]);
     }
     return total % N;
 }
@@ -62,7 +62,7 @@ bool load(const char *dictionary)
 
     //Read strings from file one at a time
     char word[LENGTH + 1];
-    while(fscanf(file, "%s", word) != EOF)
+    while (fscanf(file, "%s", word) != EOF)
     {
         //Create a new node for each word
         node *n = malloc(sizeof(node));
@@ -101,7 +101,7 @@ unsigned int size(void)
     return countword;
 }
 
-void freenode (node *n)
+void freenode(node *n)
 {
     if (n->next != NULL)
     {
@@ -116,7 +116,7 @@ bool unload(void)
     // TODO
     for (int i = 0; i < N; i++)
     {
-        if(table[i] != NULL)
+        if (table[i] != NULL)
         {
             freenode(table[i]);
         }
