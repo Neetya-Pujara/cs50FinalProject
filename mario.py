@@ -17,4 +17,4 @@ for i in range(height):
     hashes = "#" * (i + 1)
 
     # Join the variables through a formatted string
-    print(f"{spaces}{hashes} {hashes}")
+    print(f"{spaces}{hashes}  {hashes}")
