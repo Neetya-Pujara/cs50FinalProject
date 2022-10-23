@@ -2,16 +2,18 @@ from cs50 import get_float
 
 def main():
     money = [25, 10, 5, 1]
+    number = [0, 0, 0, 0]
     total = 0
     change = int(input_change() * 100)
     for n in range(4):
         if change > (money[n] - 1):
-            total += (change - (change % (money[n]))) / money[n]
+            number[n] = (change - (change % (money[n]))) / money[n]
         else:
-            total += 0
+            number[n] = 0
         change -= (number[n] * money[n])
+        total += number[n]
 
-    print(total)
+    print(int(total))
 
 
 def input_change():
