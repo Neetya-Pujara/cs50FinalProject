@@ -1,0 +1,28 @@
+from cs50 import get_float
+
+def main():
+    money = [25, 10, 5, 1]
+    number = [0, 0, 0, 0]
+    total = 0
+    change = int(input_change() * 100)
+    for n in range(4):
+        if change > (money[n] - 1):
+            number[n] = (change - (change % (money[n]))) / money[n]
+        else:
+            number[n] = 0
+        change -= (number[n] * money[n])
+        total += number[n]
+
+    print(int(total))
+
+
+def input_change():
+    while True:
+        # Input user for change owed
+        change = get_float("Change owed: ")
+        if change > 0:
+            break
+        print("Enter a valid (positive) value!")
+    return change
+
+main()
