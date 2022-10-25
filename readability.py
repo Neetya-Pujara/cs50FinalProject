@@ -7,13 +7,16 @@ text = get_string("Text: ")
 words = 1
 letters = 0
 sentences = 0
+
+# list of sentence endings
 end = [".", "?", "!"]
+
 for n in text:
     if n in end:
         sentences += 1
     elif n == " ":
         words += 1
-    elif n.isalpha:
+    elif n.isalpha():
         letters += 1
 
 # Applies the formula
@@ -28,3 +31,4 @@ elif index > 16:
     print("Grade 16+")
 else:
     print(f"Grade {index}")
+
