@@ -1,0 +1,1 @@
+SELECT name FROM people WHERE movie_id = (SELECT id FROM movies WHERE year = 2004) ORDER BY birth;
