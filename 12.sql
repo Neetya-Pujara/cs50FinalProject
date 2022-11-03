@@ -1,6 +1,9 @@
-SELECT movies.title FROM movies
+SELECT title FROM movies
 JOIN stars ON movies.id = stars.movie_id
-JOIN people ON stars.person_id = people.id
+JOIN people ON people.id = stars.person_id
 WHERE people.name = 'Johnny Depp'
-AND people.name = 'Helena Bonham';
-
+AND title IN
+(SELECT title FROM moives
+JOIN stars ON stars.person_id = movies.id
+JOIN people ON people.id = stars.person_id
+WHERE people.name = "Helena Bonham Carter");
