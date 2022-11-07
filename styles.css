@@ -1,0 +1,30 @@
+button {
+    color: black;
+    text-decoration: none;
+    background-color: yellow;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    color: navy;
+    text-indent: 20px;
+    display: block;
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+h1 {
+    text-shadow: 3px 3px #000000;
+    font-weight: bold;
+    margin-top: 3px;
+    font-family: sans-serif;
+    color: hotpink;
+}
+
+.spelling-error {
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: red;
+}

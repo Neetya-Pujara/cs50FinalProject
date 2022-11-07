@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<script>
+    function myfunction()
+    {
+        let input = document.querySelector("input");
+        if (input.value == "12")
+        {
+            input.style.backgroundColor = "green";
+            document.querySelector("#check").innerHTML = "Correct!";
+        }
+        else
+        {
+            input.style.backgroundColor = "red";
+            document.querySelector("#check").innerHTML = "Incorrect!";
+        }
+    }
+    document.addEventListener("DOMContentLoaded", function(){
+        let correct = document.querySelector(".correct");
+        correct.addEventListener("click", function(){
+            correct.style.backgroundColor = "green";
+            document.querySelector("#feedback1").innerHTML = "Correct!";
+            });
+
+        let incorrect = document.querySelectorAll(".incorrect");
+        for (let i = 0; i < incorrect.length; i++)
+        {
+            incorrect[i].addEventListener("click", function() {
+                incorrect[i].style.backgroundColor = "red";
+                document.querySelector("#feedback1").innerHTML = "Incorrect!";
+            });
+        }
+    });
+
+</script>
+
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <title>My Webpage</title>
+    </head>
+    <body>
+        <a href="http://127.0.0.1:8080/india.html"><button>Visit to where I'm from!</button></a>
+        <a href="http://127.0.0.1:8080/canada.html"><button>Visit to where I live!</button></a>
+        <a href="http://127.0.0.1:8080/goals.html"><button>Visit my goals!</button></a>
+        <a href="http://127.0.0.1:8080/hobbies.html"><button>Visit my hobbies!</button></a>
+        <br>
+        <hr>
+        <h1>What is this page?</h1>
+        <p>This is the home or accesibility page through which you can access all the other pages. However if you want to access the pages from a different page, you can do that as well. I am very happy to see you over here! <br> Welcome to Neetya's Website!</p>
+        <ol>
+            <li>You can check out my home country - <span style="color: orange;">India's</span> page1</li>
+            <li>Check out where I'm currently living - <span style="color: red;">Canada</span> Page!</li>
+            <li>I want to admit into Harvard but HOW?! I made a <span style="color: green;">goal</span> list! Check that out!</li>
+            <li>What are my hobbies! Go ahead to my <span style="color: pink;">hobby</span> page!</li>
+        </ol>
+        <p>Make sure there's no <u class="spelling-error">mispelled words</u> if you check out this quiz question below: </p>
+        <form onsubmit="myfunction()">
+            <label for="quiz">What age is Neetya?</label><br>
+            <input id="quiz" type="text" placeholder="guess!">
+            <p id="check"></p>
+        </form>
+
+        <h2>Part 1: Multiple Choice </h2>
+        <h3>What is my top hobby?</h3>
+        <hr>
+
+        <button class="incorrect">Soccer</button>
+        <button class="correct">Math</button>
+        <button class="incorrect">Chess</button>
+        <button class="incorrect">Reading</button>
+        <button class="incorrect">Playing</button>
+
+        <p id="feedback1"></p>
+    </body>
+</html>
