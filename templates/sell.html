@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <h1>Sell</h1>
+    <br>
+    <h4>Sell all the stocks you want and get the money you deserve!</h4>
+    <br>
+    <form action="/sell" method="post">
+        <div class="mb-3">
+            <select name="symbol">
+                {% for symbol in symbols %}
+                    <option value="{{ symbol }}">{{ symbol }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="shares" placeholder="Number of shares" type="number">
+        </div>
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+    <br>
+    <style>
+        table {
+            color: #212529;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin: 0;
+            text-align: left;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+        th, td {
+            padding: 0.75rem;
+            vertical-align: middle;
+            border: double;
+        }
+        tr {
+            background-color: rgb(179, 208, 255, 0.3)
+
+        }
+    </style>
+    <h2>What You Own (Details) : </h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th style="border: transparent; background-color: white"></th>
+                <th>Price</th>
+                <th>Shares</th>
+                <th>Total Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- TODO: Loop through the database entries to display them in this table -->
+            {% for row in db %}
+                <tr>
+                    <td>{{ row['symbol'] }}</td>
+                    <td>{{ row['name'] }}</td>
+                    <td style="border: transparent; background-color: white"></td>
+                    <td>{{ row['price'] }}</td>
+                    <td>{{ row['shares'] }}</td>
+                    <td>{{ row['price'] * row['shares']}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
