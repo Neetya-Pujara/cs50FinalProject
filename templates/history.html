@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <style>
+        table {
+            color: #FFFF75 #FFFFA8 #DEDBFF #B0A8FF;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin: 0;
+            text-align: left;
+            margin-bottom: 1rem;
+            width: 100%;
+            border : dashed;
+        }
+        th, td {
+            padding: 0.75rem;
+            vertical-align: middle;
+        }
+        tbody tr:nth-of-type(even) {
+            background-color: rgb(179, 208, 255, 0.3);
+
+        }
+    </style>
+    <h2>All Transactions Info</h2>
+    <table>
+        <thead style="background-color : rgb(179, 208, 255, 0.3)">
+            <tr>
+                <th>Company Name</th>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total Value</th>
+                <th>Time</th>
+                <th>Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- TODO: Loop through the database entries to display them in this table -->
+            {% for row in rows %}
+                <tr>
+                    <td>{{ row["name"] }}</td>
+                    <td>{{ row["symbol"] }}</td>
+                    <td>{{ row["shares"] }}</td>
+                    <td>{{ row["price"] }}</td>
+                    <td>{{ row["shares"] * row["price"]}}</td>
+                    <td>{{ row["date"] }}</td>
+                    <td>{{ row["type"] }}</td>
+                </tr>
+            {% endfor %}
+            <tr style="background-color: #FFFFCC;">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th scope="1">Cash</th>
+                <th scope="1">${{ cash }}</th>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
