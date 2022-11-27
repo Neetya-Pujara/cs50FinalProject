@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <h1>Add Cash To Your C$50 Account</h1>
+    <br>
+    <h4>Current Cash : {{ cash }}</h4>
+    <br>
+    <h4>Current Valuation : {{ total }}</h4>
+    <br>
+    <h6>Fill out the required Information to add cash to your account:</h6>
+    <br>
+    <br>
+    <form action="/add_cash" method="post">
+        <div class="mb-3">
+            <h3>Max Valuation = $20000</h3>
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="cash" placeholder="Additional Cash" type="number" min="1">
+        </div>
+        <button class="btn btn-primary" type="submit">Add</button>
+    </form>
+    <h6>Secured By Neetya Securities</h6>
+{% endblock %}
