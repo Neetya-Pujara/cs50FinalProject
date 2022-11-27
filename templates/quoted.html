@@ -9,16 +9,4 @@
     <h3>Name: {{ name }}</h3>
     <h3>Price: {{ price }}</h3>
     <h3>Symbol: {{ symbol }}</h3>
-
-    <h1>If you wanna buy : </h1>
-    <br>
-    <form action="/buy" method="post">
-        <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="symbol" placeholder="Stock Symbol" type="text">
-        </div>
-        <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="shares" placeholder="Number of shares" type="number">
-        </div>
-        <button class="btn btn-primary" type="submit">Buy</button>
-    </form>
 {% endblock %}
