@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <h1>Hi {{username}}!!</h1>
+    <br>
+    <br>
+    <style>
+        table {
+            color: #212529;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin: 0;
+            text-align: left;
+            margin-bottom: 1rem;
+            width: 100%;
+            border: hidden;
+        }
+        th, td {
+            padding: 0.75rem;
+            vertical-align: middle;
+            border: transparent;
+        }
+        tr {
+            background-color: rgb(179, 208, 255, 0.3)
+
+        }
+    </style>
+    <h2>Basic info</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Company Name</th>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- TODO: Loop through the database entries to display them in this table -->
+            {% for row in user_exchanges %}
+                <tr>
+                    <td>{{ row["name"] }}</td>
+                    <td>{{ row["symbol"] }}</td>
+                    <td>{{ row["shares"] }}</td>
+                    <td>{{ row["price"] }}</td>
+                    <td>{{ row["shares"] * row["price"]}}</td>
+                </tr>
+            {% endfor %}
+            <tr style="background-color: white;">
+                <td></td>
+                <td></td>
+                <th><a href="http://127.0.0.1:5000/add_cash"><button class="btn btn-primary" type="submit">Add Cash</button></a></th>
+                <th scope="1">Cash</th>
+                <th scope="1">$ {{ cash }}</th>
+            </tr>
+            <tr style="background-color: white;">
+                <td></td>
+                <td></td>
+                <td></td>
+                <th scope="1">TOTAL</th>
+                <th scope="1">$ {{ total }}</th>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
