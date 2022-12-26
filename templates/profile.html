@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <style>
+        main {
+            text-align:center;
+        }
+    </style>
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-4" style="color:black; font-weight:bold">
+            Journalist Name
+        </div>
+        <div class="col-4" style="color:black; font-weight:bold">
+            Education
+        </div>
+        <div class="col-4" style="color:black; font-weight:bold">
+            Remove
+        </div>
+    </div>
+    <br>
+    {% for row in rows %}
+        {% if row['username'] == 'Jaya' %}
+            <br>
+        {% else %}
+            <form action="/profiles" method="post" style="text-align:center">
+                <div class="row justify-content-center">
+                    <div class="col-4" style="color:violet">
+                        {{ row['username'] }}
+                    </div>
+                    <div class="col-4" style="color:hotpink">
+                        {% if row['education'] == None %}
+                            Unknown
+                        {% else %}
+                            {{ row['education'] }}
+                        {% endif %}
+                    </div>
+                    <div class="col-4">
+                        <input value="{{ row['username'] }}" name="username" type="hidden">
+                        <button class="btn btn-warning" type="submit">Remove</button>
+                    </div>
+                </div>
+                <hr>
+            </form>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

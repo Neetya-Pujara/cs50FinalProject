@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <h1 style="text-align:center; padding:50px">Hi Neetya!</h1>
+    <br>
+    <h3 style="text-align:center; color:pink">Journalist Profiles : </h3>
+    <br>
+    <table class="table table-striped-columns" style="text-align:center; padding:50px">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Education</th>
+                <th>Approve</th>
+                <th>Deny</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for profile in profiles %}
+                <tr>
+                    <form class="container-fluid" action="/register" method="post">
+                        <td><input readonly value="{{profile['username']}}" name="name"></td>
+                        <td>{{profile['education']}}</td>
+                        <td><button class="btn btn-primary" type="submit">Approve</button></td>
+                     </form>
+                     <form action="/delete_profile" method="post">
+                        <input type="hidden" value="{{profile['username']}}" name="name">
+                        <td><button class="btn btn-danger" type="submit">Deny</button></td>
+                     </form>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

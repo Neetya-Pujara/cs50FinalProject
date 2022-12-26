@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <h4 class="h1" style="padding:10px; color:purple; font-weight:bold; text-align:center; text-decoration-line:underline; text-decoration-color:aqua; text-decoration-style:wavy">NEWS</h4>
+    <br>
+    <div class="container-fluid" style="width:500px">
+        <form class="d-flex" role="search" action="/search_news" method="post">
+            <input name="title" class="form-control me-2" type="search" placeholder="Search For A News Title" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+    <br>
+    {% if not rows %}
+        {% if no_results == True %}
+            <h5 style="color:red; text-align:center">Sorry, no results for {{ title }}!</h5>
+        {% else %}
+            <h5 style="text-align:center;">Results :</h5>
+            {% for result in results %}
+                {% for result in result %}
+                    <form class="row g-3" style="max-width:500px; margin:auto;" action="/read_news" method="post">
+                        <div class="col-auto">
+                            <label for="staticEmail2" class="visually-hidden">Title</label>
+                            <input name="title" type="text" readonly class="form-control-plaintext" id="staticEmail2" value="{{result['news_title']}}">
+                        </div>
+                        <div class="col-auto">
+                            <label for="la" class="visually-hidden">Journalist</label>
+                            <input name="name" type="text" readonly class="form-control-plaintext" id="la" value="Journalist {{result['name']}}">
+                        </div>
+                        <div class="col-auto">
+                            <h6>Views : {{result['views']}}</h6>
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary mb-3">Read</button>
+                        </div>
+                    </form>
+                {% endfor %}
+                <hr>
+            {% endfor %}
+        {% endif %}
+    {% else %}
+        <br>
+        <div class="container-fluid" style="padding:10px">
+            <h1 class="h3" style="text-align:center">Popular News:</h1>
+            <br>
+            {% for popular in populars %}
+                <div class="row">
+                    <div class="col">
+                        <form class="row g-3" action="/read_news" method="post" style="padding-left:10px">
+                            <div class="col" style="max-width:1000px">
+                                <label for="staticEmail2" class="visually-hidden">Title</label>
+                                <input name="title" type="text" readonly class="form-control-plaintext" id="staticEmail2" value="{{popular['news_title']}}">
+                            </div>
+                            <div class="col-auto">
+                                <label for="la" class="visually-hidden">Journalist</label>
+                                <input name="name" type="text" readonly class="form-control-plaintext" id="la" value="{{popular['name']}}">
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary mb-3">Read</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col">
+                        <div style="text-align:center; font-weight:bold">({{popular['views']}} views)</div>
+                    </div>
+                </div>
+                <hr style="border:5px solid aqua;">
+            {% endfor %}
+        </div>
+        <h3 style="text-align:center">Latest News:</h3>
+        <br>
+        <hr style="border:5px solid yellow;">
+        {% for row in rows %}
+            <div class="row">
+                <div class="col">
+                    <form class="row g-3" action="/read_news" method="post" style="padding-left:10px">
+                        <div class="col" style="max-width:1000px">
+                            <label for="staticEmail2" class="visually-hidden">Title</label>
+                            <input name="title" type="text" readonly class="form-control-plaintext" id="staticEmail2" value="{{row['news_title']}}">
+                        </div>
+                        <div class="col-auto">
+                            <label for="la" class="visually-hidden">Journalist</label>
+                            <input name="name" type="text" readonly class="form-control-plaintext" id="la" value="{{row['name']}}">
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary mb-3">Read</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col">
+                    <div style="text-align:center; font-weight:bold">({{row['views']}} views)</div>
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+    {% endif %}
+    {% if not session["user_id"] %}
+        <br>
+        <footer style="text-align:center">
+            If you are a journalist, you can <a href="/approval">register</a> to publish news articles.
+            <br>
+            <br>
+        </footer>
+    {% endif %}
+{% endblock %}

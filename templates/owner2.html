@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <h1 style="text-align:center; padding:50px">Hi Neetya!</h1>
+    <br>
+    <h3 style="text-align:center; color:pink">News Articles For Permission: </h3>
+    <br>
+    <table class="table table-striped-columns" style="text-align:center; padding:50px">
+        <thead>
+            <tr>
+                <th>Journalist</th>
+                <th>Article</th>
+                <th>News Title</th>
+                <th>Approve</th>
+                <th>Deny</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+                <tr>
+                    <td>{{row['name']}}</td>
+                    <td>
+                        <form action="/read_news" method="post">
+                            <input value="{{ row['news_title'] }}" name="title" type="hidden">
+                            <button class="btn btn-primary" type="submit">Read</button>
+                        </form>
+                    </td>
+                    <td>{{row['news_title']}}</td>
+                    <td>
+                        <form action="/home1" method="post">
+                            <input style="background-color:white; border:white;" value="{{ row['news_title'] }}" name="title" type="hidden">
+                            <button class="btn btn-primary" type="submit">Approve</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/delete_news" method="post">
+                            <input value="{{ row['news_title'] }}" name="title" type="hidden">
+                            <button class="btn btn-danger" type="submit">Deny</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
