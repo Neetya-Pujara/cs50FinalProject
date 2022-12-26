@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <h1 class="h1" style="padding:10px; color:pink; font-weight:bold; text-align:center; text-decoration-line:underline; text-decoration-color:yellow; text-decoration-style:wavy">Journalist Registration</h1>
+    <form action="/approval" method="post" style="padding-right:200px; padding-left:200px; background-color:aliceblue">
+        <br>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Full Name</label>
+          <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Education</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" name="education" required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
+        </div>
+        <div class="mb-3 form-check">
+          <input checked type="checkbox" class="form-check-input" id="exampleCheck1" required>
+          <label class="form-check-label" for="exampleCheck1">Agree to Terms and Conditions</label>
+        </div>
+        <div id="emailHelp" class="form-text">Your information is safe and secured.</div>
+        <br>
+        <div id="emailHelp" class="form-text">After you are done registering, you can check if you are registered by logging in with the same username and password! If not logged in, the owner has probably denied your request!</div>
+        <br>
+        <button type="submit" class="btn btn-primary">Validate Profile</button>
+        <br>
+        <br>
+      </form>
+
+{% endblock %}

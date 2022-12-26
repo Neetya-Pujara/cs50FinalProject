@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <style>
+        main {
+            text-align:center;
+            padding:10px;
+        }
+    </style>
+    <h1 class="h1">{{title}}</h1>
+    <p style="padding:50px">{{article}}</p>
+    {% if not on_hold %}
+        <div class="row">
+            <div class="col" style="height:10px;">
+                <hr style="border:solid yellow 5px">
+                <form action="/comment" method="post">
+                    <input name="title" value="{{title}}" type="hidden">
+                    <div class="form-floating mb-3">
+                        <input name="comment" type="text" class="form-control" id="floatingInput" placeholder="comment">
+                        <label for="floatingInput">Comment</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input name="adjective" type="text" class="form-control" id="floatingInput" placeholder="comment">
+                        <label for="floatingInput">Name for Comment</label>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-outline-warning">Comment</button>
+                    <hr>
+                </form>
+                <h5>Views : {{views}}</h5>
+                <h5>Likes: {{likes}}</h5>
+                <br>
+                <form action="/like" method="post">
+                    <input name="title" value="{{title}}" type="hidden">
+                    <button type="submit" class="btn btn-outline-info">Like</button>
+                </form>
+            </div>
+            <div class="col">
+                <hr style="border:solid pink 5px">
+                {% for comment in comments %}
+                    <p style="text-align:center; padding-left:10px; font-size:20px" class="lead">
+                        <span style="font-weight:bold; color:violet">{{comment['adjective']}}</span>: {{comment['comment']}}
+                        {% if session['user_id'] == 1 %}
+                            <form class="container-fluid" action="/delete_comment" method="post" style="text-align:right;">
+                                <input type="hidden" name="comment" value="{{comment['comment']}}">
+                                <button type="submit" class="btn btn-outline-danger">Delete Comment</button>
+                            </form>
+                        {% endif %}
+                    </p>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

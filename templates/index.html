@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <h1 class="h1" style="text-align:center; padding:10px">Hi {{ username }}!</h1>
+    <h4 class="h6" style="padding:10px; text-align:center; color:green">This page shows what news or products you suggested the owner that have been approved by her and published on <span style="font-weight:bold; color:blueviolet">N-News</span>!</h4>
+    <table class="table table-striped" style="text-align:center">
+        <thead>
+          <tr>
+            <th>News Title</th>
+            <th>Journalist Name</th>
+            <th>Request</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+                <tr>
+                    <td>{{row['news_title']}}</td>
+                    <td>{{ row['name'] }}</td>
+                    <td>{{row['request']}}</td>
+                </tr>
+            {%  endfor %}
+        </tbody>
+      </table>
+      <br>
+{% endblock %}

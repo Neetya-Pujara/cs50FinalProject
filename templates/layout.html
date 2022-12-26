@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <!-- http://getbootstrap.com/docs/5.1/ -->
+        <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" rel="stylesheet">
+        <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"></script>
+
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/">N-News</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              {% if session["user_id"] %}
+                <div class="collapse navbar-collapse">
+                    <div class="navbar-nav">
+                        {% if not session['user_id'] == 1 %}
+                            <a class="nav-link" href="/home">Home</a>
+                        {% endif %}
+                        <a class="nav-link" href="/add_news">Add News</a>
+                        {% if session["user_id"] == 1 %}
+                            <a class="nav-link" href="/profile2">Profile Submissions</a>
+                            <a class="nav-link" href="/home1">Article Submissions</a>
+                            <a class="nav-link" href="/profiles">Manage Profiles</a>
+                            <a class="nav-link" href="/list_news">Manage Articles</a>
+                        {% endif %}
+                        <a class="nav-link" href="/logout">Log Out</a>
+                    </div>
+                </div>
+                {% else %}
+                <div class="collapse navbar-collapse">
+                    <div class="navbar-nav">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        <a class="nav-link" href="/approval">Journalist Registration</a>
+                        <a class="nav-link" href="/login">Journalist Log In</a>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+          </nav>
+
+        <main>{% block main %}{% endblock %}</main>
+    </head>
+</html>
