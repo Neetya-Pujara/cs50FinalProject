@@ -3,7 +3,7 @@
 
 int main(void)
 {
-    //input user for height
+    // input user for height
     int height;
     do
     {
@@ -11,10 +11,10 @@ int main(void)
     }
     while (height < 1);
 
-    //make pyramid
+    // make pyramid
     for (int i = 1; i <= height; i++)
     {
-        for (int j = 0; j < height-i; j++)
+        for (int j = 0; j < height - i; j++)
         {
             printf(" ");
         }
