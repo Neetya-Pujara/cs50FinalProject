@@ -59,7 +59,7 @@ int main(void)
         // american express
         if (number / 100000000000000 > 0 && number / 1000000000000000 == 0)
         {
-            int second = number / 1000000000000;
+            int second = number / 10000000000000;
             if (second == 34 || second == 37)
             {
                 printf("AMEX\n");
