@@ -20,7 +20,7 @@ int main(void)
     int sum2 = 0;
     bool whichSum = true;
     bool done = false;
-    for (long curr = 10; done == false; curr*=10)
+    for (long curr = 10; done == false; curr *= 10)
     {
         if (number / curr <= 0)
         {
@@ -28,13 +28,13 @@ int main(void)
         }
         if (whichSum == true)
         {
-            sum1 += ((number % curr) - previous) / (curr/10);
+            sum1 += ((number % curr) - previous) / (curr / 10);
             whichSum = false;
         }
         else
         {
-            int num = (((number % curr) - previous) / (curr/10)) * 2;
-            if (num/10 == 0)
+            int num = (((number % curr) - previous) / (curr / 10)) * 2;
+            if (num / 10 == 0)
             {
                 sum2 += num;
             }
@@ -56,13 +56,13 @@ int main(void)
     // in case of valid checksum
     else
     {
-        //american express
+        // american express
         if (number / 100000000000000 > 0 && number / 1000000000000000 == 0)
         {
             int second = number / 1000000000000;
             if (second == 34 || second == 37)
             {
-                printf("AMERICAN EXPRESS\n");
+                printf("AMEX\n");
             }
             else
             {
@@ -70,7 +70,7 @@ int main(void)
             }
         }
 
-        //visa or mastercard
+        // visa or mastercard
         else if (number / 1000000000000000 > 0 && number / 10000000000000000 == 0)
         {
             int second = number / 100000000000000;
@@ -88,7 +88,7 @@ int main(void)
             }
         }
 
-        //visa
+        // visa
         else if (number / 1000000000000 > 0 && number / 10000000000000 == 0)
         {
             int first = number / 1000000000000;
