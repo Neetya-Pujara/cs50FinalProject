@@ -1,6 +1,6 @@
 #include <cs50.h>
-#include <stdio.h>
 #include <ctype.h>
+#include <stdio.h>
 
 int calculate(string word, int letters[]);
 int length(string str);
@@ -9,7 +9,8 @@ string strtoupper(string str);
 int main(void)
 {
     // input and score initialization
-    int letter_scores[] = {1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10};
+    int letter_scores[] = {1, 3, 3, 2,  1, 4, 2, 4, 1, 8, 5, 1, 3,
+                           1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10};
     string word1 = strtoupper(get_string("Player 1: "));
     string word2 = strtoupper(get_string("Player 2: "));
 
@@ -49,7 +50,7 @@ int calculate(string word, int letters[])
     {
         if (word[i] >= 'A' && word[i] <= 'Z')
         {
-            score += letters[word[i]-65];
+            score += letters[word[i] - 65];
         }
     }
     return score;
