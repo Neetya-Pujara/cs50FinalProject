@@ -1,65 +1,88 @@
 #include <cs50.h>
 #include <stdio.h>
-#include <ctype.h>
 
-int length(string str);
 string cipher(string text, string key);
-string tolowerkey(string key);
+bool isValid(string key);
+int length(string text);
 
 int main(int argc, string argv[])
 {
+    // ensure key is given
     if (argc != 2)
     {
         printf("Usage : ./substitution key\n");
         return 1;
     }
 
-    else if (length(argv[1]) != 26)
+    //ensure key is valid
+    string key = argv[1];
+    if (length(key) != 26 || isValid(key) == false)
     {
-        printf("Key must contain 26 characters.\n");
+        printf("Key must contain 26 characters\n");
         return 1;
     }
 
-    string key = tolowerkey(argv[1]);
     string plaintext = get_string("plaintext: ");
     printf("ciphertext: %s\n", cipher(plaintext, key));
 }
 
-string tolowerkey(string key)
+bool isValid(string key)
 {
-    for (int i = 0, len = length(key); i < len; i++)
+    int alphabets[26];
+    for (int i = 0; i < 26; i++)
     {
-        key[i] = tolower(key[i]);
-    }
-    return key;
-}
-string cipher(string text, string key)
-{
-    string ciphertext = "";
-    for (int i = 0, len = length(text); i < len; i++)
-    {
-        if (text[i] >= 'a' && text[i] <= 'z')
+        if (key[i] >= 'a' && key[i] <= 'z')
         {
-            ciphertext += key[text[i]-97];
+            for (int j = 0; j < i; j++)
+            {
+                if (alphabets[j] == key[i])
+                {
+                    return false;
+                }
+            }
+            alphabets[i] = key[i];
         }
-        else if (text[i] >= 'A' && text[i] <= 'Z')
+        if (key[i] >= 'A' && key[i] <= 'Z')
         {
-            ciphertext += toupper(key[text[i]-65]);
+            for (int j = 0; j < i; j++)
+            {
+                if (alphabets[j] == key[i])
+                {
+                    return false;
+                }
+            }
+            alphabets[i] = key[i];
         }
         else
         {
-            ciphertext += text[i];
+            return false;
         }
     }
-    return ciphertext;
+    return true;
 }
 
-int length(string str)
+int length(string text)
 {
     int len = 0;
-    for (int i = 0; str[i] != '\0'; i++)
+    for (int i = 0; text[i] != '\0'; i++)
     {
         len++;
     }
     return len;
+}
+
+string cipher(string text, string key)
+{
+    for (int i = 0, len = length(text); i < len; i++)
+    {
+        if (text[i] >= 'a' && text[i] <= 'z')
+        {
+            text[i] = key[text[i]-97];
+        }
+        else if (text[i] >= 'A' && text[i] <= 'Z')
+        {
+            text[i] = key[text[i]-65];
+        }
+    }
+    return text;
 }
