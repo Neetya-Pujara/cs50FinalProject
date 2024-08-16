@@ -106,7 +106,7 @@ int sentence_count(string text, int len)
         {
             letters = true;
         }
-        else if (text[i] == '.' && letters == true)
+        else if ((text[i] == '.' || text[i] == '!' || text[i] == '?') && letters == true)
         {
             sentences++;
             letters = false;
