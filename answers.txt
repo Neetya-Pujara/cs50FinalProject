@@ -1,0 +1,23 @@
+sort1 uses: Bubble Sort
+
+How do you know?: I timed sort1 and sort3 for reversed10000 after I figured out sort2 is Merge Sort.
+Bubble sort is going to continue sorting the list and making n swaps in each of the n iterations as the list is reversed.
+But selection sort will find the smallest element in the unsorted list and swap it with the first element of the unsorted list.
+Thus, in every iteration, the unsorted list will reduce 1. So, selection sort will have a running time less than n^2. Hence, selection sort
+will take slightly less time than bubble sort. Hence, as sort1 had 0.272s and sort2 had 0.177s, I concluded sort1 is Bubble Sort and sort2
+is Selection Sort.
+
+sort2 uses: Merge Sort
+
+How do you know?: Because when I timed each sorting algorithm file, sort2 sorted the random50000 in 0.891s which was the lowest in
+comparison to the other two. As sort2 took the least time and merge sort has the least running time, I believe sort2 the fastest sorting
+algorithm - Merge Sort.
+
+sort3 uses: Selection Sort
+
+How do you know?: I timed sort1 and sort3 for reversed10000 after I figured out sort2 is Merge Sort.
+Bubble sort is going to continue sorting the list and making n swaps in each of the n iterations as the list is reversed.
+But selection sort will find the smallest element in the unsorted list and swap it with the first element of the unsorted list.
+Thus, in every iteration, the unsorted list will reduce 1. So, selection sort will have a running time less than n^2. Hence, selection sort
+will take slightly less time than bubble sort. Hence, as sort1 had 0.272s and sort2 had 0.177s, I concluded sort1 is Bubble Sort and sort2
+is Selection Sort.
