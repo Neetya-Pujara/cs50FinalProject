@@ -20,7 +20,7 @@ int main(int argc, string argv[])
         return 1;
     }
 
-    string key = argv[1];
+    string key = tolowerkey(argv[1]);
     string plaintext = get_string("plaintext: ");
     printf("ciphertext: %s\n", cipher(plaintext, key));
 }
@@ -29,8 +29,9 @@ string tolowerkey(string key)
 {
     for (int i = 0, len = length(key); i < len; i++)
     {
-        key[i] = tolower(key[i])
+        key[i] = tolower(key[i]);
     }
+    return key;
 }
 string cipher(string text, string key)
 {
