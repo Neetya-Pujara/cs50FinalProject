@@ -16,7 +16,7 @@ int main(int argc, string argv[])
         return 1;
     }
 
-    //ensure key is valid
+    // ensure key is valid
     string key = upperkey(argv[1]);
     if (length(key) != 26 || isValid(key) == false)
     {
@@ -68,11 +68,11 @@ string cipher(string text, string key)
     {
         if (text[i] >= 'a' && text[i] <= 'z')
         {
-            text[i] = tolower(key[text[i]-97]);
+            text[i] = tolower(key[text[i] - 97]);
         }
         else if (text[i] >= 'A' && text[i] <= 'Z')
         {
-            text[i] = key[text[i]-65];
+            text[i] = key[text[i] - 65];
         }
     }
     return text;
