@@ -1,9 +1,11 @@
 #include <cs50.h>
+#include <ctype.h>
 #include <stdio.h>
 
 string cipher(string text, string key);
 bool isValid(string key);
 int length(string text);
+string upperkey(string key);
 
 int main(int argc, string argv[])
 {
@@ -15,7 +17,7 @@ int main(int argc, string argv[])
     }
 
     //ensure key is valid
-    string key = argv[1];
+    string key = upperkey(argv[1]);
     if (length(key) != 26 || isValid(key) == false)
     {
         printf("Key must contain 26 characters\n");
@@ -31,17 +33,6 @@ bool isValid(string key)
     int alphabets[26];
     for (int i = 0; i < 26; i++)
     {
-        if (key[i] >= 'a' && key[i] <= 'z')
-        {
-            for (int j = 0; j < i; j++)
-            {
-                if (alphabets[j] == key[i])
-                {
-                    return false;
-                }
-            }
-            alphabets[i] = key[i];
-        }
         if (key[i] >= 'A' && key[i] <= 'Z')
         {
             for (int j = 0; j < i; j++)
@@ -77,7 +68,7 @@ string cipher(string text, string key)
     {
         if (text[i] >= 'a' && text[i] <= 'z')
         {
-            text[i] = key[text[i]-97];
+            text[i] = tolower(key[text[i]-97]);
         }
         else if (text[i] >= 'A' && text[i] <= 'Z')
         {
@@ -85,4 +76,13 @@ string cipher(string text, string key)
         }
     }
     return text;
+}
+
+string upperkey(string key)
+{
+    for (int i = 0; i < 26; i++)
+    {
+        key[i] = toupper(key[i]);
+    }
+    return key;
 }
