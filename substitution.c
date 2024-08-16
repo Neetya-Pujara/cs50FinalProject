@@ -1,8 +1,10 @@
 #include <cs50.h>
 #include <stdio.h>
+#include <ctype.h>
 
 int length(string str);
 string cipher(string text, string key);
+string tolowerkey(string key);
 
 int main(int argc, string argv[])
 {
@@ -15,7 +17,7 @@ int main(int argc, string argv[])
     else if (length(argv[1]) != 26)
     {
         printf("Key must contain 26 characters.\n");
-        return 2;
+        return 1;
     }
 
     string key = argv[1];
@@ -23,6 +25,13 @@ int main(int argc, string argv[])
     printf("ciphertext: %s\n", cipher(plaintext, key));
 }
 
+string tolowerkey(string key)
+{
+    for (int i = 0, len = length(key); i < len; i++)
+    {
+        key[i] = tolower(key[i])
+    }
+}
 string cipher(string text, string key)
 {
     string ciphertext = "";
@@ -34,7 +43,7 @@ string cipher(string text, string key)
         }
         else if (text[i] >= 'A' && text[i] <= 'Z')
         {
-            ciphertext += key[text[i]-65];
+            ciphertext += toupper(key[text[i]-65]);
         }
         else
         {
