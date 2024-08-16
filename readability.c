@@ -82,6 +82,11 @@ int word_count(string text, int len)
         {
             letters = true;
         }
+        else if (text[i] == '.' && letters == true)
+        {
+            words++;
+            letters = false;
+        }
         else if (text[i] == ' ' && letters == true)
         {
             words++;
