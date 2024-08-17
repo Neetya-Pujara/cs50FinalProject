@@ -115,7 +115,7 @@ void record_preferences(int ranks[])
 {
     for (int i = 0; i < candidate_count; i++)
     {
-        for (int j = i+1; j < candidate_count; j++)
+        for (int j = i + 1; j < candidate_count; j++)
         {
             preferences[ranks[i]][ranks[j]]++;
         }
@@ -128,7 +128,7 @@ void add_pairs(void)
 {
     for (int i = 0; i < candidate_count; i++)
     {
-        for (int j = i+1; j < candidate_count; j++)
+        for (int j = i + 1; j < candidate_count; j++)
         {
             if (preferences[i][j] == preferences[j][i])
             {
@@ -157,15 +157,17 @@ void sort_pairs(void)
 {
     for (int j = 0; j < pair_count; j++)
     {
-        for (int i = 0; i < pair_count-1; i++)
+        for (int i = 0; i < pair_count - 1; i++)
         {
-            int difference = preferences[pairs[i].winner][pairs[i].loser] - preferences[pairs[i].loser][pairs[i].winner];
-            int difference2 = preferences[pairs[i+1].winner][pairs[i+1].loser] - preferences[pairs[i+1].loser][pairs[i+1].winner];
+            int difference = preferences[pairs[i].winner][pairs[i].loser] -
+                             preferences[pairs[i].loser][pairs[i].winner];
+            int difference2 = preferences[pairs[i + 1].winner][pairs[i + 1].loser] -
+                              preferences[pairs[i + 1].loser][pairs[i + 1].winner];
             if (difference2 > difference)
             {
                 pair temp = pairs[i];
-                pairs[i] = pairs[i+1];
-                pairs[i+1] = temp;
+                pairs[i] = pairs[i + 1];
+                pairs[i + 1] = temp;
             }
         }
     }
@@ -203,7 +205,7 @@ void lock_pairs(void)
             {
                 if (locked[queue[first]][j] == true)
                 {
-                    queue[counter+1] = j;
+                    queue[counter + 1] = j;
                     counter++;
                 }
             }
