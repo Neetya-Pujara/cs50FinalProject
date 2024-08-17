@@ -19,8 +19,8 @@ candidate candidates[MAX];
 int candidate_count;
 
 // Function prototypes
-bool vote(string name, int voter_count);
-void print_winner(int cc);
+bool vote(string name);
+void print_winner();
 
 int main(int argc, string argv[])
 {
@@ -52,20 +52,20 @@ int main(int argc, string argv[])
         string name = get_string("Vote: ");
 
         // Check for invalid vote
-        if (!vote(name, candidate_count))
+        if (!vote(name))
         {
             printf("Invalid vote.\n");
         }
     }
 
     // Display winner of election
-    print_winner(candidate_count);
+    print_winner();
 }
 
 // Update vote totals given a new vote
-bool vote(string name, int voter_count)
+bool vote(string name)
 {
-    for (int i = 0; i < voter_count; i++)
+    for (int i = 0; i < candidate_count; i++)
     {
         if (strcmp(candidates[i].name, name) == 0)
         {
@@ -77,7 +77,7 @@ bool vote(string name, int voter_count)
 }
 
 // Print the winner (or winners) of the election
-void print_winner(int cc)
+void print_winner()
 {
     int max_count = 0;
     for (int i = 0; i < candidate_count; i++)
