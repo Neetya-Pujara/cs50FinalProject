@@ -1,0 +1,18 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    <h1>Reading : {{title}}</h1>
+    <p></p>
+    <button><a href="{% url 'encyclopedia:edit_page' title=title %}">Edit Content</a></button>
+    <p></p>
+    {% if content %}
+        {{ content | safe }}
+    {%else%}
+        <h3>Error : This entry does not exist unfortunately!</h3>
+    {%endif%}
+
+{% endblock %}
