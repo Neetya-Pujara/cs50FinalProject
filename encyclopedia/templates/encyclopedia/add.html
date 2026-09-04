@@ -1,0 +1,27 @@
+{% extends "encyclopedia/layout.html" %}
+
+{%block title%}
+    Add New Page 
+{%endblock%}
+
+{%block body%}
+
+    <form action="{% url 'encyclopedia:new_page' %}" method="post">
+        {%csrf_token%}
+        {% if not haveTitle %}
+            <input type="text" name="title" placeholder="Enter Title">
+            <input type="hidden" value="newpage" name="check">
+        {% else %}
+            <h2>Editing : {{haveTitle}}</h2>
+            <input type="hidden" value="{{haveTitle}}" name="title">
+            <input type="hidden" value="editpage" name="check">
+        {%endif%}
+        <p></p>
+        <p><label for="c">Markdown Article Content:</label></p>
+
+        <textarea id="c" name="content">{{precontent}}</textarea>
+
+        <input type="submit" value="Save">
+    </form>
+
+{%endblock%}
